@@ -1,0 +1,124 @@
+.start1:hover i,
+.start1:hover a {
+    color: #2A80B9;
+    transition: all 0.3s ease;
+}
+.start2:hover i,
+.start2:hover a {
+    color: #2A80B9;
+    transition: all 0.3s ease;
+}
+ul li{
+    padding: 6px 10px 6px 36px;
+}
+ul{
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    list-style: none;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.show_language {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(7, auto);
+    gap: 10px;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    margin-left: 5px;
+
+}
+.logo img{
+    width: 116px;
+}
+.regisn{
+    padding: 6px 8px;
+    
+}
+.home_cover h1,content{
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+.center-box{ 
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 790px;
+}
+.title{
+    padding-top: 15%;
+    font-size: 48px;
+}
+.home_buttons a{
+    padding: 12px 30px;
+    background-color: rgb(2 132 199);
+    border-radius: 2px;
+
+}
+.about {
+    background-color: #f4f4f4;
+}
+.navbar {
+    transition: transform 0.2s ease-in-out;
+}
+.navbar-hidden {
+    transform: translateY(-100%);
+}
+.offcanvas {
+    transition: transform 0.3s ease-in-out;
+}
+.offcanvas-hidden {
+    transform: translateY(-100%);
+}
+
+ .line_sp{
+    font-size: 12px;
+    color: #696767;
+ }
+ .fa-xmark{
+    color: #696767;
+ }
+ .upload_file,.close-button{
+    cursor: pointer;
+ }
+ .keotha{
+    font-size: 26px;
+
+ }
+ a.decoration-active {
+    position: relative;
+    text-decoration: none;
+}
+
+a.decoration-active::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+a.decoration-active:hover::after {
+    width: 100%;
+
+}
+.dropzone {
+    width: 100%;
+    height: 100px; /* Chiều cao tùy chỉnh cho khu vực Dropzone */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #007bff; /* Viền đứt nét */
+    border-radius: 8px; /* Bo góc */
+    background-color: rgba(0, 123, 255, 0.1); /* Màu nền nhạt */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển tiếp */
+}
+
+.dropzone.dragover {
+    background-color: rgba(0, 123, 255, 0.3); /* Màu nền khi kéo file vào */
+}
+
