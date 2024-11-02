@@ -23,28 +23,28 @@ class FileService
     
         $uploadedFiles = [];
         $failedFiles = [];
-        DB::beginTransaction();
     
-        try {
-            foreach ($data['files'] as $file) {
+        foreach ($data['files'] as $file) {
+            try {
+                // Bắt đầu một giao dịch mới cho từng file
+                DB::beginTransaction();
+    
                 if ($file->getClientOriginalName() == 'error_test.jpg') {
                     throw new Exception('File name is invalid');
                 }
-                try {
-                    $result = $this->fileRepository->uploadFile($file);
-                    $uploadedFiles[] = $result;
-                } catch (Exception $e) {
-                    error_log('Error uploading file: ' . $file->getClientOriginalName() . ' - ' . $e->getMessage());
-                    $failedFiles[] = $file->getClientOriginalName();
-                    continue;
-                }
+    
+                // Gọi phương thức upload và lưu vào database
+                $result = $this->fileRepository->uploadFile($file);
+                $uploadedFiles[] = $result;
+    
+                // Commit giao dịch nếu upload thành công
+                DB::commit();
+            } catch (Exception $e) {
+                // Rollback nếu có lỗi với file này
+                DB::rollBack();
+                error_log('Error uploading file: ' . $file->getClientOriginalName() . ' - ' . $e->getMessage());
+                $failedFiles[] = $file->getClientOriginalName();
             }
-    
-          DB::commit();
-    
-        } catch (Exception $e) {
-            DB::rollBack();
-            throw new Exception("Upload failed. Transaction rolled back. Error: " . $e->getMessage());
         }
     
         return [
@@ -53,6 +53,7 @@ class FileService
             'message' => 'Upload process completed with ' . count($uploadedFiles) . ' successful uploads and ' . count($failedFiles) . ' failures.'
         ];
     }
+    
     
 
     public function deleteFile($fileName)

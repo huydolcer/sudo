@@ -339,8 +339,8 @@ const uploadFiles = async () => {
             }
         });
 
-        alert("Tải lên thành công!");
-        // nho reset lai
+        alert(""Phản hồi từ server:", response.data");
+        window.location.reload();  // Tải lại trang sau khi tải lên thành công
         console.log("Phản hồi từ server:", response.data);
     } catch (error) {
         alert("Tải lên thất bại! Vui lòng kiểm tra console để biết thêm chi tiết.");
